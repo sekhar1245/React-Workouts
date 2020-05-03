@@ -13,7 +13,10 @@ class App extends Component {
     Author:'Sekhar1245'
   }
 
-  switchNameHandler = () => {
+  //two ways we can pass method references between components
+  //1.Binding method <button>
+  //2.passing method reference using props <person>
+  switchNameHandler = (newName) => {
 
     // we shouldnt mutate like below ,React will not recognise 
     // this.state.persons[0].name="sekhar1245";   
@@ -22,7 +25,7 @@ class App extends Component {
 
       
       persons:[
-        {name: 'sekhar1245' , age: 21},
+        {name: newName , age: 21},
         {name: 'Ramki45' , age: 22},
         {name: 'Naresh45' , age: 23}
       ]
@@ -34,9 +37,10 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Started react learning...!</h1>
-        <button onClick={this.switchNameHandler}> Switch Name</button>
+        <button onClick={this.switchNameHandler.bind(this,"chandru.....!")}> Switch Name</button>
         <Person   name={this.state.persons[0].name} age= {this.state.persons[0].age} />
-        <Person  name={this.state.persons[1].name} age={this.state.persons[1].age}>My hobbie: chess</Person>
+        <Person  name={this.state.persons[1].name} age={this.state.persons[1].age}
+        click={this.switchNameHandler.bind(this,"chandru1245.....!")}>My hobbie: chess</Person>
         <Person name={this.state.persons[2].name} age={this.state.persons[2].age}/>
 
       </div>
