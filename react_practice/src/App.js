@@ -11,7 +11,9 @@ class App extends Component {
       {name: 'Ramki' , age: 32},
       {name: 'Naresh' , age: 33}
     ],
-    Author:'Sekhar1245'
+    Author:'Sekhar1245',
+    otherState:'some other value',
+    showPersons:false
   }
 
   //two ways we can pass method references between components
@@ -33,6 +35,13 @@ class App extends Component {
 
     });
 
+  }
+
+  togglePersonHandler = () => {
+
+    const doesShow = this.state.showPersons;
+
+    this.setState({showPersons: !doesShow})
   }
 
   nameChangeHandler = (event) =>{
@@ -61,7 +70,11 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Started React learning...!</h1>
-        <button  style ={styles} onClick={() => this.switchNameHandler("chandru.....!")}> Switch Name</button>
+        <button  style ={styles} onClick={() => this.togglePersonHandler()}> Toggle Persons</button>
+       
+       { 
+         this.state.showPersons === true ?
+         <div>
         <Person   
         name={this.state.persons[0].name} 
         age= {this.state.persons[0].age} />
@@ -73,6 +86,9 @@ class App extends Component {
         <Person n
         name={this.state.persons[2].name} 
         age={this.state.persons[2].age}/>
+
+        </div>: null
+       }
 
       </div>
     );
