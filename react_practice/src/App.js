@@ -7,9 +7,9 @@ class App extends Component {
   state = {
 
     persons:[
-      {name: 'chandrasekhar' , age: 31},
-      {name: 'Ramki' , age: 32},
-      {name: 'Naresh' , age: 33}
+      {id:'1201', name: 'chandrasekhar' , age: 31},
+      {id:'1202' , name: 'Ramki' , age: 32},
+      {id:'1203' , name: 'Naresh' , age: 33}
     ],
     Author:'Sekhar1245',
     otherState:'some other value',
@@ -57,16 +57,34 @@ class App extends Component {
     this.setState({persons:persons});
   }
 
-  nameChangeHandler = (event) =>{
+  nameChangeHandler = (event,id) =>{
 
-    this.setState({
+    const personIndex = this.state.persons.findIndex(p => { 
+
+      return p.id===id;
+    });
+
+    //fetch the person object based on personIndex
+    const person = { ...this.state.persons[personIndex]};
+
+    //alternate way to retrieve person object
+    //const person = Object.assign({},this.state.persons[personIndex]);
+     
+    person.name = event.target.value;
+
+    const persons = this.state.persons.slice();
+    persons[personIndex] = person;
+    this.setState({persons:persons});
+
+
+    /* this.setState({
       persons:[
         {name: "chandrasekhar" , age: 21},
         {name: event.target.value , age: 22},
         {name: 'Naresh45' , age: 23}
       ]
 
-    });
+    }); */
 
 
   }
@@ -92,6 +110,8 @@ class App extends Component {
             click ={() => this.deletePersonHandler(index)}
             name={person.name}
             age={person.age} 
+            key={person.id}
+            changed={(event)=>this.nameChangeHandler(event,person.id)}
              />
 
           })}
