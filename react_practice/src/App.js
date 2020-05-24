@@ -1,8 +1,24 @@
 import React, { Component } from 'react';
 import './App.css'; 
-import Radium, {StyleRoot} from 'radium';
 import Person from './Person/Person.js';
+import styled from 'styled-components';
 
+
+const StyledButton = styled.button`
+
+      background-color:green;
+      font:inherit;
+      color:white;
+      border:1px solid blue;
+      padding:8px;
+      cursor:pointer;
+
+      &:hover{
+        background-color:lightgreen;
+        color:black
+      }
+
+`;
 
 class App extends Component {
   state = {
@@ -91,17 +107,7 @@ class App extends Component {
   }
   render() {
 
-    const styles= {
-      backgroundColor:'green',
-      font:'inherit',
-      border:'1px solid blue',
-      padding:'8px',
-      cursor:'pointer',
-      ':hover':{
-        backgroundColor:'lightgreen',
-        color:'white'
-      }
-      };
+   
 
 
       let persons =null;
@@ -125,13 +131,7 @@ class App extends Component {
         
         )
 
-          styles.backgroundColor='red';
-
-          //below syntax will help to change mouse hovering properties on button
-           styles[':hover']={
-            backgroundColor:'salmon',
-            color:'white'
-          };
+      
       }
 
     let classes=[];
@@ -145,21 +145,21 @@ class App extends Component {
 
 
     return (
-      <StyleRoot>
+      
       <div className="App">
         <h1 >Started React learning...!</h1>
        <p className ={classes.join(' ')}> Welcome to react world</p>
-        <button  style ={styles} onClick={() => this.togglePersonHandler()}> Toggle Persons</button>
+        <StyledButton  onClick={() => this.togglePersonHandler()}> Toggle Persons</StyledButton>
        
       {persons}
       </div>
-      </StyleRoot>
+      
     );
   }
 }
 
 //Passing App component to Radium function is called higher order component. 
-export default Radium(App);
+export default App;
 
 
 
