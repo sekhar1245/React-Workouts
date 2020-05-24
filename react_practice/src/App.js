@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css'; 
+import Radium from 'radium';
 import Person from './Person/Person.js';
 
 
@@ -91,11 +92,15 @@ class App extends Component {
   render() {
 
     const styles= {
-      backgroundColor:'white',
+      backgroundColor:'green',
       font:'inherit',
       border:'1px solid blue',
       padding:'8px',
-      cursor:'pointer'
+      cursor:'pointer',
+      ':hover':{
+        backgroundColor:'lightgreen',
+        color:'white'
+      }
       };
 
 
@@ -121,6 +126,11 @@ class App extends Component {
         )
 
           styles.backgroundColor='red';
+
+           styles[':hover']={
+            backgroundColor:'salmon',
+            color:'white'
+          };
       }
 
     let classes=[];
@@ -149,4 +159,11 @@ class App extends Component {
   }
 }
 
-export default App;
+//Passing App component to Radium function is called higher order component. 
+export default Radium(App);
+
+
+
+
+//added radium package for CSS media queries & psedo selectors in normal JS inline styles.to do that one we are additing popular package radium
+//npm install --save radium
