@@ -120,7 +120,7 @@ class App extends Component {
         
         )
 
-
+          styles.backgroundColor='red';
       }
 
     return (
