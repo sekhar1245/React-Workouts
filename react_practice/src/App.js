@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css'; 
-import Radium from 'radium';
+import Radium, {StyleRoot} from 'radium';
 import Person from './Person/Person.js';
 
 
@@ -127,6 +127,7 @@ class App extends Component {
 
           styles.backgroundColor='red';
 
+          //below syntax will help to change mouse hovering properties on button
            styles[':hover']={
             backgroundColor:'salmon',
             color:'white'
@@ -144,17 +145,15 @@ class App extends Component {
 
 
     return (
+      <StyleRoot>
       <div className="App">
         <h1 >Started React learning...!</h1>
        <p className ={classes.join(' ')}> Welcome to react world</p>
         <button  style ={styles} onClick={() => this.togglePersonHandler()}> Toggle Persons</button>
        
       {persons}
-        
-     
-       
-
       </div>
+      </StyleRoot>
     );
   }
 }
