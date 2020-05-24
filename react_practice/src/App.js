@@ -123,9 +123,11 @@ class App extends Component {
           styles.backgroundColor='red';
       }
 
+    let classes=['red','bold'].join(' ');
+
     return (
       <div className="App">
-        <h1>Started React learning...!</h1>
+        <h1 className={classes}>Started React learning...!</h1>
         <button  style ={styles} onClick={() => this.togglePersonHandler()}> Toggle Persons</button>
        
       {persons}
