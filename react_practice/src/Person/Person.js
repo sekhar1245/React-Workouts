@@ -16,7 +16,7 @@ padding:16px;
 
 const person = (props)=>{
 
-    const style = {
+     /* const style = {
         '@media (min-width:500px':{
 
             width:'450px'
@@ -24,7 +24,7 @@ const person = (props)=>{
             
 
         }
-    }
+    } */
 
    return ( 
    //<div className ="Person" style={style} onClick={props.click}> 
